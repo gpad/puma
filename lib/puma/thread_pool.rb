@@ -37,7 +37,9 @@ module Puma
       end
     end
 
-    attr_reader :spawned
+    def spawned
+      @mutex.synchronize { @spawned }
+    end
 
     # How many objects have yet to be processed by the pool?
     #
